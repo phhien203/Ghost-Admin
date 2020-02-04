@@ -5,30 +5,30 @@ import {get} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 const TYPES = [{
-    name: 'All posts',
+    name: 'Tất cả bài viết',
     value: null
 }, {
-    name: 'Draft posts',
+    name: 'Bài viết nháp',
     value: 'draft'
 }, {
-    name: 'Published posts',
+    name: 'Bài viết đã đăng',
     value: 'published'
 }, {
-    name: 'Scheduled posts',
+    name: 'Bài viết được lên lịch',
     value: 'scheduled'
 }, {
-    name: 'Featured posts',
+    name: 'Bài viết nổi bật',
     value: 'featured'
 }];
 
 const ORDERS = [{
-    name: 'Newest',
+    name: 'Mới nhất',
     value: null
 }, {
-    name: 'Oldest',
+    name: 'Cũ nhất',
     value: 'published_at asc'
 }, {
-    name: 'Recently updated',
+    name: 'Cập nhật gần nhất',
     value: 'updated_at desc'
 }];
 
@@ -82,7 +82,7 @@ export default Controller.extend({
             .filter(tag => tag.get('id') !== null)
             .sort((tagA, tagB) => tagA.name.localeCompare(tagB.name, undefined, {ignorePunctuation: true}));
         let options = tags.toArray();
-        options.unshiftObject({name: 'All tags', slug: null});
+        options.unshiftObject({name: 'Tất cả thẻ', slug: null});
 
         return options;
     }),
@@ -102,7 +102,7 @@ export default Controller.extend({
         let authors = this.get('_availableAuthors');
         let options = authors.toArray();
 
-        options.unshiftObject({name: 'All authors', slug: null});
+        options.unshiftObject({name: 'Tất cả tác giả', slug: null});
 
         return options;
     }),

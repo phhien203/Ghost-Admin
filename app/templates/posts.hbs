@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Posts</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>Bài viết</h2>
         <section class="view-actions">
             <GhContentfilter
                 @selectedType={{this.selectedType}}
@@ -17,7 +17,7 @@
                 @onOrderChange={{action "changeOrder"}}
             />
 
-            <LinkTo @route="editor.new" @model="post" class="gh-btn gh-btn-green" data-test-new-post-button={{true}}><span>New post</span></LinkTo>
+            <LinkTo @route="editor.new" @model="post" class="gh-btn gh-btn-green" data-test-new-post-button={{true}}><span>Viết bài mới</span></LinkTo>
         </section>
     </GhCanvasHeader>
 
@@ -26,9 +26,9 @@
             {{#if this.postsInfinityModel}}
                 <li class="gh-list-row header">
                     <div class="gh-list-header no-padding">{{!--Favorite indicator column: no header--}}</div>
-                    <div class="gh-list-header gh-posts-title-header">Title</div>
-                    <div class="gh-list-header gh-posts-status-header">Status</div>
-                    <div class="gh-list-header gh-posts-lastupdate-header">Last update</div>
+                    <div class="gh-list-header gh-posts-title-header">Tiêu đề</div>
+                    <div class="gh-list-header gh-posts-status-header">Trạng thái</div>
+                    <div class="gh-list-header gh-posts-lastupdate-header">Cập nhật gần nhất</div>
                 </li>
             {{/if}}
 
@@ -41,14 +41,14 @@
                 <div class="no-posts">
                     {{#if this.showingAll}}
                         {{svg-jar "posts-placeholder" class="gh-posts-placeholder"}}
-                        <h3>You haven't written any posts yet!</h3>
+                        <h3>Chưa có bài viết nào!</h3>
                         <LinkTo @route="editor.new" @model="post" class="gh-btn gh-btn-green gh-btn-lg">
-                            <span>Write a new post</span>
+                            <span>Viết bài mới</span>
                         </LinkTo>
                     {{else}}
-                        <h3>No posts match the current filter</h3>
+                        <h3>Không tìm thấy bài viết nào</h3>
                         <LinkTo @route="posts" @query={{hash type=null author=null tag=null}} class="gh-btn gh-btn-lg">
-                            <span>Show all posts</span>
+                            <span>Hiển thị tất cả bài viết</span>
                         </LinkTo>
                     {{/if}}
                 </div>

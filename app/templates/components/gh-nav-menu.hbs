@@ -20,55 +20,55 @@
             <li class="relative">
                 <span {{action "transitionToOrRefreshSite" on="click"}}>
                     <LinkTo @route="site" data-test-nav="site" @current-when={{this.isOnSite}} @preventDefault={{false}}>
-                        {{svg-jar "house"}} View site
+                        {{svg-jar "house"}} Xem trang
                     </LinkTo>
                 </span>
-                <a href="{{this.config.blogUrl}}/" class="gh-secondary-action" title="Open site in new tab" target="_blank">
+                <a href="{{this.config.blogUrl}}/" class="gh-secondary-action" title="Mở trang trong tab mới" target="_blank">
                     <span>{{svg-jar "expand"}}</span>
                 </a>
             </li>
         </ul>
         <ul class="gh-nav-list gh-nav-manage">
-            <li class="gh-nav-list-h">Manage</li>
+            <li class="gh-nav-list-h">Quản lý</li>
             <li class="gh-nav-list-new relative">
                 {{!-- clicking the Content link whilst on the content screen should reset the filter --}}
                 {{#if (eq this.router.currentRouteName "posts")}}
-                    <LinkTo @route="posts" @query={{hash type=null author=null tag=null order=null}} @classNames="active" data-test-nav="posts">{{svg-jar "content"}}Posts</LinkTo>
+                    <LinkTo @route="posts" @query={{hash type=null author=null tag=null order=null}} @classNames="active" data-test-nav="posts">{{svg-jar "content"}}Bài viết</LinkTo>
                 {{else}}
-                    <LinkTo @route="posts" data-test-nav="posts">{{svg-jar "content"}}Posts</LinkTo>
+                    <LinkTo @route="posts" data-test-nav="posts">{{svg-jar "content"}}Bài viết</LinkTo>
                 {{/if}}
                 <LinkTo @route="editor.new" @model="post" @classNames="gh-secondary-action gh-nav-new-post" @alt="New story" data-test-nav="new-story"><span>{{svg-jar "add-stroke"}}</span></LinkTo>
             </li>
             <li>
                 {{!-- clicking the Content link whilst on the content screen should reset the filter --}}
                 {{#if (eq this.router.currentRouteName "pages")}}
-                    <LinkTo @route="pages" @query={{hash type=null author=null tag=null order=null}} @classNames="active" data-test-nav="pages">{{svg-jar "page"}}Pages</LinkTo>
+                    <LinkTo @route="pages" @query={{hash type=null author=null tag=null order=null}} @classNames="active" data-test-nav="pages">{{svg-jar "page"}}Trang</LinkTo>
                 {{else}}
-                    <LinkTo @route="pages" data-test-nav="pages">{{svg-jar "page"}}Pages</LinkTo>
+                    <LinkTo @route="pages" data-test-nav="pages">{{svg-jar "page"}}Trang</LinkTo>
                 {{/if}}
             </li>
             {{#if (gh-user-can-admin this.session.user)}}
-                <li><LinkTo @route="tags" data-test-nav="tags">{{svg-jar "tag"}}Tags</LinkTo></li>
+                <li><LinkTo @route="tags" data-test-nav="tags">{{svg-jar "tag"}}Thẻ</LinkTo></li>
             {{/if}}
             {{#if (and this.feature.members (gh-user-can-admin this.session.user))}}
                 <li>
-                    <LinkTo @route="members" @current-when="members member" data-test-nav="members">{{svg-jar "members"}}Members</LinkTo>
+                    <LinkTo @route="members" @current-when="members member" data-test-nav="members">{{svg-jar "members"}}Thành viên</LinkTo>
                 </li>
             {{/if}}
-            <li><LinkTo @route="staff" data-test-nav="staff">{{svg-jar "staff"}}Staff</LinkTo></li>
+            <li><LinkTo @route="staff" data-test-nav="staff">{{svg-jar "staff"}}Nhân viên</LinkTo></li>
         </ul>
         {{#if (gh-user-can-admin this.session.user)}}
             <ul class="gh-nav-list gh-nav-settings">
-                <li class="gh-nav-list-h">Settings</li>
-                <li><LinkTo @route="settings.general" data-test-nav="settings">{{svg-jar "settings"}}General</LinkTo></li>
-                <li><LinkTo @route="settings.design" data-test-nav="design">{{svg-jar "paintbrush"}}Design</LinkTo></li>
-                <li><LinkTo @route="settings.code-injection" data-test-nav="code-injection">{{svg-jar "brackets"}}Code injection</LinkTo></li>
-                <li><LinkTo @route="settings.integrations" @current-when={{this.isIntegrationRoute}} data-test-nav="integrations">{{svg-jar "modules"}}Integrations</LinkTo></li>
+                <li class="gh-nav-list-h">Thiết lập</li>
+                <li><LinkTo @route="settings.general" data-test-nav="settings">{{svg-jar "settings"}}Tổng quan</LinkTo></li>
+                <li><LinkTo @route="settings.design" data-test-nav="design">{{svg-jar "paintbrush"}}Thiết kế</LinkTo></li>
+                <li><LinkTo @route="settings.code-injection" data-test-nav="code-injection">{{svg-jar "brackets"}}Mã nhúng</LinkTo></li>
+                <li><LinkTo @route="settings.integrations" @current-when={{this.isIntegrationRoute}} data-test-nav="integrations">{{svg-jar "modules"}}Tích hợp</LinkTo></li>
                 <li class="relative">
                     <button class="gh-secondary-action" title="Toggle Night shift" {{action (toggle "nightShift" this.feature)}}>
                         <span>{{svg-jar "nightshift"}}</span>
                     </button>
-                    <LinkTo @route="settings.labs" data-test-nav="labs">{{svg-jar "labs"}}Labs</LinkTo>
+                    <LinkTo @route="settings.labs" data-test-nav="labs">{{svg-jar "labs"}}Thử nghiệm</LinkTo>
                 </li>
             </ul>
         {{/if}}
@@ -124,7 +124,7 @@
                     <li class="divider"></li>
                     <li role="presentation">
                         <LinkTo @route="staff.user" @model={{this.session.user.slug}} @classNames="dropdown-item" @role="menuitem" @tabindex="-1" data-test-nav="user-profile">
-                            {{svg-jar "user-circle"}} Your Profile
+                            {{svg-jar "user-circle"}} Hồ sơ của bạn
                         </LinkTo>
                     </li>
                     <li role="presentation">

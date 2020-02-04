@@ -2,9 +2,9 @@
     <div id="entry-controls">
         <div class="{{if this.isViewingSubview 'settings-menu-pane-out-left' 'settings-menu-pane-in'}} settings-menu settings-menu-pane">
             <div class="settings-menu-header">
-                <h4>{{capitalize this.post.displayName}} settings</h4>
+                <h4>Thiết lập bài viết</h4>
                 <button class="close settings-menu-header-action" {{action "closeMenus" target=this.ui}} data-test-close-settings-menu>
-                    {{svg-jar "close"}}<span class="hidden">Close</span>
+                    {{svg-jar "close"}}<span class="hidden">Đóng</span>
                 </button>
             </div>
             <div class="settings-menu-content">
@@ -17,16 +17,16 @@
                 />
                 <form>
                 <div class="form-group">
-                    <label for="url">{{capitalize this.post.displayName}} URL</label>
+                    <label for="url">Đường link bài viết</label>
                     {{!-- new posts don't have a preview link --}}
                     {{#unless this.post.isNew}}
                         {{#if this.post.isPublished}}
                         <a class="post-view-link" target="_blank" href="{{this.post.url}}">
-                            View {{this.post.displayName}} {{svg-jar "external"}}
+                            Xem bài viết {{svg-jar "external"}}
                         </a>
                         {{else}}
                         <a class="post-view-link" target="_blank" href="{{this.post.previewUrl}}">
-                            Preview {{svg-jar "external"}}
+                            Xem trước {{svg-jar "external"}}
                         </a>
                         {{/if}}
                     {{/unless}}
@@ -47,9 +47,9 @@
 
                 <div class="form-group">
                     {{#if (or this.post.isDraft this.post.isPublished this.post.pastScheduledTime)}}
-                        <label>Publish date</label>
+                        <label>Ngày đăng</label>
                     {{else}}
-                        <label>Scheduled date</label>
+                        <label>Ngày lên lịch đăng</label>
                     {{/if}}
                     <GhDateTimePicker
                         @date={{this.post.publishedAtBlogDate}}
@@ -70,7 +70,7 @@
 
                 {{#unless this.session.user.isContributor}}
                 <div class="form-group">
-                    <label for="tag-input">Tags</label>
+                    <label for="tag-input">Thẻ</label>
                     <GhPsmTagsInput @post={{this.post}} @triggerId="tag-input" />
                 </div>
                 {{/unless}}
@@ -87,7 +87,7 @@
 
 
                 <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="customExcerpt">
-                    <label for="custom-excerpt">Excerpt</label>
+                    <label for="custom-excerpt">Đoạn trích</label>
                     <GhTextarea
                         @class="post-setting-custom-excerpt"
                         @id="custom-excerpt"
@@ -103,7 +103,7 @@
 
                 {{#unless this.session.user.isAuthorOrContributor}}
                     <GhFormGroup @class="for-select" @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="authors" data-test-input="authors">
-                        <label for="author-list">Authors</label>
+                        <label for="author-list">Tác giả</label>
                         <GhPsmAuthorsInput @selectedAuthors={{this.post.authors}} @updateAuthors={{action "changeAuthors"}} @triggerId="author-list" />
                         <GhErrorMessage @errors={{this.post.errors}} @property="authors" data-test-error="authors" />
                     </GhFormGroup>
@@ -112,21 +112,21 @@
                 <ul class="nav-list nav-list-block">
                     <li class="nav-list-item" {{action "showSubview" "meta-data"}} data-test-button="meta-data">
                         <button type="button">
-                            <b>Meta data</b>
-                            <span>Extra content for search engines</span>
+                            <b>Siêu dữ liệu</b>
+                            <span>Nội dung bổ sung dành cho bộ máy tìm kiếm</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
                     <li class="nav-list-item" {{action "showSubview" "twitter-data"}} data-test-button="twitter-data">
                         <button type="button">
-                            <b>Twitter card</b>
-                            <span>Customise structured data for Twitter</span>
+                            <b>Thẻ Twitter</b>
+                            <span>Tùy chỉnh cấu trúc hiển thị cho Twitter</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
                     <li class="nav-list-item" {{action "showSubview" "facebook-data"}} data-test-button="facebook-data">
                         <button type="button">
-                            <b>Facebook card</b>
+                            <b>Thẻ Facebook</b>
                             <span>Customise Open Graph data</span>
                         </button>
                         {{svg-jar "arrow-right"}}
@@ -142,8 +142,8 @@
                     {{/if}}
                     <li class="nav-list-item" {{action "showSubview" "codeinjection"}} data-test-button="codeinjection">
                         <button type="button">
-                            <b>Code injection</b>
-                            <span>Add styles/scripts to the header &amp; footer</span>
+                            <b>Mã nhúng</b>
+                            <span>Thêm mã nhúng vào header và footer</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
@@ -160,7 +160,7 @@
                             data-test-checkbox="featured"
                         >
                         <span class="input-toggle-component"></span>
-                        <p>Feature this {{this.post.displayName}}</p>
+                        <p>Đây là bài viết nổi bật</p>
                     </label>
                 </div>
                 {{/unless}}
@@ -170,7 +170,7 @@
                     @onTemplateSelect={{action (mut this.post.customTemplate)}} />
 
                 {{#unless this.post.isNew}}
-                    <button type="button" class="gh-btn gh-btn-hover-red gh-btn-icon settings-menu-delete-button" {{action "deletePost"}}><span>{{svg-jar "trash"}} Delete {{this.post.displayName}}</span></button>
+                    <button type="button" class="gh-btn gh-btn-hover-red gh-btn-icon settings-menu-delete-button" {{action "deletePost"}}><span>{{svg-jar "trash"}} Xóa bài viết này</span></button>
                 {{/unless}}
 
                 </form>
@@ -183,14 +183,14 @@
                     {{#if (eq this.subview "meta-data")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
-                            <h4>Meta data</h4>
+                            <h4>Siêu dữ liệu</h4>
                             <div style="width:23px;"></div>
                         </div>
 
                         <div class="settings-menu-content">
                             <form {{action "discardEnter" on="submit"}}>
                                 <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="metaTitle">
-                                    <label for="meta-title">Meta title</label>
+                                    <label for="meta-title">Tiêu đề siêu dữ liệu</label>
                                     <GhTextInput
                                         @class="post-setting-meta-title"
                                         @id="meta-title"
@@ -200,12 +200,12 @@
                                         @focus-out={{action "setMetaTitle" this.metaTitleScratch}}
                                         @stopEnterKeyDownPropagation={{true}}
                                         data-test-field="meta-title" />
-                                    <p>Recommended: <b>70</b> characters. You’ve used {{gh-count-down-characters this.metaTitleScratch 70}}</p>
+                                    <p>Đề xuất: <b>70</b> ký tự. Bạn đã nhập {{gh-count-down-characters this.metaTitleScratch 70}}</p>
                                     <GhErrorMessage @errors={{this.post.errors}} @property="meta-title" />
                                 </GhFormGroup>
 
                                 <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="metaDescription">
-                                    <label for="meta-description">Meta description</label>
+                                    <label for="meta-description">Mô tả siêu dữ liệu</label>
                                     <GhTextarea
                                         @class="post-setting-meta-description"
                                         @id="meta-description"
@@ -215,7 +215,7 @@
                                         @focus-out={{action "setMetaDescription" this.metaDescriptionScratch}}
                                         @stopEnterKeyDownPropagation="true"
                                         data-test-field="meta-description" />
-                                    <p>Recommended: <b>156</b> characters. You’ve used {{gh-count-down-characters this.metaDescriptionScratch 156}}</p>
+                                    <p>Đề xuất: <b>156</b> ký tự. Bạn đã nhập {{gh-count-down-characters this.metaDescriptionScratch 156}}</p>
                                     <GhErrorMessage @errors={{this.post.errors}} @property="meta-description" />
                                 </GhFormGroup>
 
@@ -233,7 +233,7 @@
                                 </GhFormGroup>
 
                                 <div class="form-group">
-                                    <label>Search Engine Result Preview</label>
+                                    <label>Xem trước siêu dữ liệu khi tìm kiếm</label>
                                     <div class="seo-preview">
                                         <div class="seo-preview-title">{{truncate this.seoTitle 70}}</div>
                                         <div class="seo-preview-link">{{truncate this.seoURL 70}}</div>
